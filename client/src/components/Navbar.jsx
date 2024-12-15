@@ -6,7 +6,7 @@ import { AppContext } from "../context/AppContext";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { user } = useContext(AppContext);
+  const { user, setShowLogin, logout, credit } = useContext(AppContext);
   return (
     <div className="flex justify-between py-4">
       <Link to="/">
@@ -21,10 +21,10 @@ const Navbar = () => {
             >
               <img src={assets.credit_star} alt="credit_star" className="w-5" />
               <p className="text-xs sm:text-sm font-medium text-gray-600">
-                Credits left : 10
+                Credits left : {credit}
               </p>
             </button>
-            <p className="text-gray-600 max-sm:hidden pl-4">Hi, User</p>
+            <p className="text-gray-600 max-sm:hidden pl-4">Hi, {user.name}</p>
             <div className="relative group">
               <img
                 src={assets.profile_icon}
@@ -33,7 +33,9 @@ const Navbar = () => {
               />
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
                 <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                  <li className="py-1 px-2 cursor-pointer">Logout</li>
+                  <li onClick={logout} className="py-1 px-2 cursor-pointer">
+                    Logout
+                  </li>
                 </ul>
               </div>
             </div>
@@ -46,7 +48,10 @@ const Navbar = () => {
             >
               Pricing
             </p>
-            <button className="bg-zinc-800 text-white px-7 py-2 sm:px-6 text-sm rounded-full cursor-pointer">
+            <button
+              onClick={() => setShowLogin(true)}
+              className="bg-zinc-800 text-white px-7 py-2 sm:px-6 text-sm rounded-full cursor-pointer"
+            >
               Login
             </button>
           </div>

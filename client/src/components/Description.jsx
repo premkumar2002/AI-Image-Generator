@@ -1,9 +1,16 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { motion } from "framer-motion";
 
 const Description = () => {
   return (
-    <section className="container mx-auto px-4 py-16 md:py-24">
+    <motion.section
+      className="container mx-auto px-4 py-16 md:py-24"
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ delay: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
           Create AI Images
@@ -40,7 +47,7 @@ const Description = () => {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Check } from "lucide-react";
 import { plans } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
+import { motion } from "framer-motion";
 
 const Button = ({ children, className, variant = "default", ...props }) => (
   <button
@@ -50,7 +51,13 @@ const BuyCredit = () => {
   const { user } = useContext(AppContext);
 
   return (
-    <div className="flex flex-col items-center py-12 px-4 min-h-screen">
+    <motion.div
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="flex flex-col items-center py-12 px-4 min-h-screen"
+    >
       <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-4">
         Choose Your Plan
       </h1>
@@ -115,7 +122,7 @@ const BuyCredit = () => {
           </Card>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
