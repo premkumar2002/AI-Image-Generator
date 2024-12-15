@@ -119,7 +119,6 @@ Server
 Express
 Mongoose
 JSON Web Token (JWT)
-Razorpay
 Axios
 Bcrypt
 Contributing
